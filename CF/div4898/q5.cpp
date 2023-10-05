@@ -120,16 +120,16 @@ int sortpair(pair<int,int>&a, pair<int,int>&b){
 // This is the where i write the logic of the problem
 
 void solve(){
-	int n,x;
+	ll n,x;
 	cin>>n>>x;
-	vector<int>arr(n);
-	int ma=0;
+	vector<ll>arr(n);
+	ll ma=0;
 	for(int i = 0 ; i  < n ;i++){
 		cin>>arr[i];
 		ma=max(arr[i],ma);
 	}
 	// ma-=2;
-	int in=0;
+	ll in=0;
 	
 	for(int i=0;i<n;i++){
 		if(arr[i]<ma){
@@ -144,19 +144,20 @@ void solve(){
 	if(in==x){
 		cout<<ma<<endl;
 		return;
-	}else if(x<in){
-		sort(arr.begin(),arr.end());
-		int l = 0, r = ma;
+	}
+	
+	ll l = 0, r = 2000000007;
 
 		    while (l < r) {
-		        int mid = (l + r + 1) / 2;
-		        int total_diff = 0;
+		        ll mid = (l + r + 1) / 2;
+		        ll total_diff = 0;
 		
 		        for (int i = 0; i < n; i++) {
 		            if (arr[i] < mid) {
 		                total_diff += mid - arr[i];
 		            }
 		        }
+		        // cout<<l<<" "<<r<<" "<<total_diff<<endl;
 		
 		        if (total_diff <= x) {
 		            l = mid;
@@ -166,16 +167,6 @@ void solve(){
 		    }
 		
 		    cout << l << endl;
-	}else{
-		int dif = x-in;
-		
-		int more = dif/n;
-		cout<<more+ma<<endl;
-	}
-	
-	
-	// see(arr);
-	// cout<<endl;
 }
 
 
@@ -188,4 +179,4 @@ int main(){
 	}
 	return 0;
 }
-
+ 
